@@ -1,0 +1,33 @@
+{
+    "name": "aries\/oss",
+    "description": "阿里云OSS 支持 PHP8",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "HaoLiang",
+            "email": "haoliang@qiyuankeji.cn"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1",
+        "illuminate/support": "^7.0|^8.0",
+        "phpunit/phpunit": "^9.3.3",
+        "php": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aries\\Oss\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aries\\Oss\\Providers\\ServiceProvider"
+            ],
+            "aliases": {
+                "EasyOss": "Aries\\Oss\\Facades\\EasyOss"
+            }
+        }
+    }
+
+}
