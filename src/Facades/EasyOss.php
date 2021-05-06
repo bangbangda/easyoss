@@ -1,6 +1,6 @@
 <?php
 
-namespace Aries\Oss\Facades;
+namespace Anan\Oss\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

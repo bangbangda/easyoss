@@ -1,6 +1,6 @@
 <?php
 
-namespace Aries\Oss\Support;
+namespace Anan\Oss\Support;
 
 class MimeTypes
 {

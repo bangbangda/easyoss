@@ -1,8 +1,8 @@
 <?php
-namespace Aries\Oss\Providers;
+namespace Anan\Oss\Providers;
 
-use Aries\Oss\OssClient;
-use Aries\Oss\Support\Config;
+use Anan\Oss\OssClient;
+use Anan\Oss\Support\Config;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class ServiceProvider extends LaravelServiceProvider

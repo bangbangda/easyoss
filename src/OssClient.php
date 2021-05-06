@@ -1,9 +1,9 @@
 <?php
 
-namespace Aries\Oss;
+namespace Anan\Oss;
 
-use Aries\Oss\Support\Config;
-use Aries\Oss\Support\HttpClient;
+use Anan\Oss\Support\Config;
+use Anan\Oss\Support\HttpClient;
 
 
 class OssClient
