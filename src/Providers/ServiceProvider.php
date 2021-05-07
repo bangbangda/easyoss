@@ -24,7 +24,7 @@ class ServiceProvider extends LaravelServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/alioss.php' => config_path('alioss.php'),
-        ]);
+        ], 'easyOss.config');
     }
 
     public function provides(): array
