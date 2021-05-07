@@ -13,8 +13,17 @@ $ composer require anan/oss -vvv
 ```phpt
 <?php
 use Anan\Oss\Facades\EasyOss;
-
+// 随机生成文件名
 $ossUrl = EasyOss::uploadFile('/tmp/logo.jpg');
+
+// 指定文件夹名称，文件名随机生成
+$ossUrl = EasyOss::uploadFile('/tmp/logo.jpg', 'store');
+
+// 指定文件名
+$ossUrl = EasyOss::uploadFile('/tmp/logo.jpg', 'new-logo.jpg');
+
+// 指定完整文件名
+$ossUrl = EasyOss::uploadFile('/tmp/logo.jpg', 'logo/new-logo.jpg');
 
 ```
 

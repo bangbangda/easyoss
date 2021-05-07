@@ -20,6 +20,7 @@ class OssClient
      * @param string $fileName 上传后的文件名，为空会随机生成。
      * @return string OSS URL
      * @throws GuzzleException
+     * @throws \Exception
      */
     public function uploadFile(string $filePath, String $fileName = ''): string
     {
@@ -29,7 +30,7 @@ class OssClient
             $http = new HttpClient();
             return $http->put($filePath, $this->getFileName($fileName));
         }
-
+        throw new \Exception('上传文件不存在');
     }
 
     /**
