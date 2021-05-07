@@ -41,7 +41,7 @@ trait OssTrait
             }
         }
 
-        $stringSign .= '/'.config('alioss.defaultBucket').'/'.$fileName;
+        $stringSign .= '/'.config('alioss.defaultBucket').$fileName;
 
         return base64_encode(hash_hmac('sha1', $stringSign, config('alioss.accessKeySecret'), true));
     }
