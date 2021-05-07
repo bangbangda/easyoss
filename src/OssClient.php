@@ -32,11 +32,25 @@ class OssClient
 
     }
 
-
+    /**
+     * 处理自定义目录、文件名
+     *
+     * @param string $fileName
+     * @return string
+     */
     private function getFileName(string $fileName): string
     {
-        $fileName = empty($fileName) ? Str::random(10). '.' . $this->file->getExtension() : $fileName;
+        if (empty($fileName)) {
+            $fileName = $this->getRandomName();
+        } else if (! Str::contains($fileName, '.')) {
+            $fileName = Str::finish($fileName, '/') . $this->getRandomName();
+        }
 
         return Str::start($fileName, '/');
+    }
+
+    private function getRandomName(): string
+    {
+        return Str::random(10). '.' . $this->file->getExtension();
     }
 }
