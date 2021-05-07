@@ -1,8 +1,20 @@
 <?php
-namespace Anan\Oss\Support;
+namespace Anan\Oss\Traits;
 
-class Util
+use GuzzleHttp\Client;
+
+trait OssTrait
 {
+
+    public function getHttpClient(): Client
+    {
+        return new Client([
+            // Base URI is used with relative requests
+            'base_uri' => $this->getOssHost(true),
+            // You can set any number of default request options.
+            'timeout'  => 3.0,
+        ]);
+    }
 
     public function getOssHost(bool $isHttp = false): string
     {
@@ -34,6 +46,7 @@ class Util
 
         return base64_encode(hash_hmac('sha1', $string_to_sign_ordered, config('alioss.accessKeySecret'), true));
     }
+
 
     public function getAuthorization(array $headers, string $fileName): string
     {
