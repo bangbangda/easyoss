@@ -27,10 +27,9 @@ trait OssTrait
 
     public function signature(array $headers, string $fileName): string
     {
-
         uksort($headers, 'strnatcasecmp');
 
-        $string_to_sign_ordered = "PUT\n\n";
+        $stringSign = "PUT\n\n";
 
         foreach ($headers as $header_key => $value) {
             if (
@@ -38,13 +37,13 @@ trait OssTrait
                 strtolower($header_key) === 'content-type' ||
                 strtolower($header_key) === 'date'
             ) {
-                $string_to_sign_ordered .= $value . "\n";
+                $stringSign .= $value . "\n";
             }
         }
 
-        $string_to_sign_ordered .= '/'.config('alioss.defaultBucket').'/activity/'.$fileName;
+        $stringSign .= '/'.config('alioss.defaultBucket').'/'.$fileName;
 
-        return base64_encode(hash_hmac('sha1', $string_to_sign_ordered, config('alioss.accessKeySecret'), true));
+        return base64_encode(hash_hmac('sha1', $stringSign, config('alioss.accessKeySecret'), true));
     }
 
 
@@ -52,4 +51,5 @@ trait OssTrait
     {
         return 'OSS ' . config('alioss.accessKeyId') . ':' . $this->signature($headers, $fileName);;
     }
+
 }

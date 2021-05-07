@@ -9,13 +9,12 @@ use Anan\Oss\Traits\OssTrait;
 
 class HttpClient
 {
-
     use OssTrait;
 
     /**
      * @throws \Exception|GuzzleException
      */
-    public function put(string $filePath, String $fileName = ''): string
+    public function put(string $filePath, String $fileName): string
     {
         $file = new \SplFileInfo($filePath);
 
@@ -27,17 +26,15 @@ class HttpClient
             'Authorization' => 'OSS '.config('alioss.accessKeyId').':ffMmsvnEJHeUmzQVGoVJsAweWHs='
         ];
 
-        $fileName = empty($fileName) ? Str::random(10). '.' . $file->getExtension() : $fileName;
-
         $headers['Authorization'] = $this->getAuthorization($headers, $fileName);
 
-        $result = $this->getHttpClient()->put('activity/' . $fileName, [
+        $result = $this->getHttpClient()->put($fileName, [
             'body' =>  Utils::tryFopen($filePath, 'r'),
             'headers' => $headers
         ]);
 
         if ($result->getStatusCode() == 200) {
-            return $this->getOssHost(true) . "/activity/$fileName";
+            return $this->getOssHost(true) . $fileName;
         } else {
             throw new \Exception('Oss 上传失败');
         }
