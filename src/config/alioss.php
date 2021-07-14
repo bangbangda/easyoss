@@ -4,4 +4,5 @@ return [
     'accessKeySecret' => '',
     'endpoint' => '',
     'defaultBucket' => '',
+    'httpTimeout' => 10,
 ];
