@@ -12,7 +12,7 @@ trait OssTrait
             // Base URI is used with relative requests
             'base_uri' => $this->getOssHost(true),
             // You can set any number of default request options.
-            'timeout'  => 3.0,
+            'timeout'  => config('alioss.httpTimeout', 10),
         ]);
     }
 
